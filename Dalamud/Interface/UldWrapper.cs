@@ -140,7 +140,11 @@ public class UldWrapper : IDisposable
         }
 
         // Always replace the HD version with the regular one as ULDs do not contain the HD suffix.
-        texturePath = texturePath.Replace("_hr1", string.Empty);
+        texturePath = texturePath
+            .Replace("_hr1", string.Empty)
+            .Replace("light/", string.Empty)
+            .Replace("third/", string.Empty)
+            .Replace("fourth/", string.Empty);
 
         // Search the requested texture asset in the ULD and store its ID if it exists.
         var id = uint.MaxValue;
